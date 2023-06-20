@@ -1,0 +1,35 @@
+package CountOfPrimeNo;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class A {
+
+	public static void main(String[] args) {
+		
+		List<Integer> l=new ArrayList<Integer>();
+		l.add(7);
+		l.add(6);
+		l.add(2);
+		l.add(11);
+		l.add(3);
+		l.add(8);
+		
+	 l.stream().filter(i->isPrime(i)).collect(Collectors.toList()).forEach(System.out::println);
+	 System.out.println("========");
+	 long count = l.stream().filter(i->isPrime(i)).count();
+	 
+	 System.out.println(count);
+	}
+	
+	private static boolean isPrime(int x) {
+		int count=0;
+		for(int i=1;i<=x;i++) {
+			if(x%i==0) {
+				count++;
+			}
+		}
+		return count==2;
+	}
+}

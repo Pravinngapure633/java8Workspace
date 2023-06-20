@@ -1,0 +1,11 @@
+package Functional_Interface;
+
+import java.util.function.Function;
+
+public class functionDemo {
+
+	public static void main(String[] args) {
+		
+		Function<String, R>
+	}
+}

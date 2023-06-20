@@ -1,0 +1,21 @@
+package FindLargestSalaryInList;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class Test {
+	
+	public static void main(String[] args) {
+		List<Employee> empList=new ArrayList<Employee>();
+		  empList.add(new Employee(101, "Saurabh",  87000));
+		  empList.add(new Employee(105, "Vishal", "Hr", 90000, "HR"));
+		  empList.add(new Employee(104, "Pravin", "Cloud Eng", 55000, "Cloud"));
+		  empList.add(new Employee(107, "Sahil", "Developer", 65000, "Dev"));
+		  empList.add(new Employee(103, "Bhupesh", "Developer", 87000, "Dev"));
+		  empList.add(new Employee(108, "Akshay", "Manager", 100000, "Dev"));
+		  empList.add(new Employee(102, "Piyush", "Tester", 35000, "HR"));
+		  empList.add(new Employee(109, "Mayank", "Clerk", 20000, "Admin"));
+	}
+
+}

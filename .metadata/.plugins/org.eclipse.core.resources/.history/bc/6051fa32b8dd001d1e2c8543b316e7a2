@@ -1,0 +1,14 @@
+package Functional_Interface;
+
+import java.util.function.Function;
+
+public class FunctionDemo_2 {
+	
+	public static void main(String[] args) {
+		
+		Function<String ,Integer> fun=str-> Integer.parseInt(str);
+		Integer integer=fun.apply("123");
+		System.out.println(integer);
+	}
+
+}

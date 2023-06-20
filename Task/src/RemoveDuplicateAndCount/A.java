@@ -1,0 +1,29 @@
+package RemoveDuplicateAndCount;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class A {
+
+	public static void main(String[] args) {
+		
+		List<Integer> list=new ArrayList<Integer>();
+		list.add(8);
+		list.add(9);
+		list.add(8);
+		list.add(10);
+		list.add(9);
+		
+		
+		list.stream().distinct().forEach(System.out::println);
+		
+		System.out.println("========");
+		
+		Map<Integer, Long> collect = list.stream().collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
+	
+		collect.entrySet().stream().forEach(System.out::println);
+	}
+}

@@ -1,0 +1,67 @@
+package com.cjc.streamapi;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
+public class StreamDemo {
+
+	public static void main(String[] args) {
+
+		List<Integer> list = new ArrayList<Integer>();
+		list.add(13);
+		list.add(7);
+		list.add(3);
+		list.add(4);
+		list.add(9);
+		list.add(3);
+		list.add(9);
+		
+		List<Integer> list2 = list.stream().limit(1).collect(Collectors.toList());
+		System.out.println(list2);
+	
+		
+	}
+	//sorted
+	public static void sortedAndremoveDuplicate(List<Integer> list) {
+		List<Integer> list2 = list.stream().distinct().sorted().collect(Collectors.toList());
+		System.out.println(list2);
+	}
+	//distinct method
+	public static void removeDuplicate(List<Integer> list) {
+		List<Integer> list2 = list.stream().distinct().collect(Collectors.toList());
+		System.out.println(list2);
+	}
+	//map method
+	public static void convertToSquare(List<Integer> list) {
+		// Function<Integer, Integer> fun=num->num*num;
+		List<Integer> list2 = list.stream()
+				.map(num -> num * num)
+				.collect(Collectors.toList());
+		System.out.println(list2);
+	}
+
+	// filter method
+	public static void oddLessthan10(List<Integer> list) {
+		List<Integer> oddListLessThan10 = list.stream().filter(num -> num % 2 != 0).filter(num -> num < 10)
+				.collect(Collectors.toList());
+
+		System.out.println(oddListLessThan10);
+	}
+
+	// filter method
+	public static void separateEvenNum(List<Integer> list) {
+		// Predicate<Integer> even=num->num%2==0;
+		//
+		// List<Integer> list2 =
+		// list.stream().filter(even).collect(Collectors.toList());
+
+		List<Integer> list2 = list.stream().filter(num -> num % 2 == 0) // intermediate operation
+				.collect(Collectors.toList()); // terminal operation
+
+		System.out.println(list2);
+	}
+}

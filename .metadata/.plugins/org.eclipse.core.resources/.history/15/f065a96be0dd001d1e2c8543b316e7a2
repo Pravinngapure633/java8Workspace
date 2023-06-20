@@ -1,0 +1,24 @@
+package FindLargestSalaryInList;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+
+public class Test {
+	
+	public static void main(String[] args) {
+		List<Employee> l=new ArrayList<Employee>();
+		  l.add(new Employee(103, "Pravin", 100000.00));
+		  l.add(new Employee(101, "saurabh", 95000.0));
+		  l.add(new Employee(104, "Vishal", 65000.00));
+		  
+		   Optional<Integer> d= l.stream().map(emp->emp.getId()).sorted(Comparator.reverseOrder()).findFirst();
+		  System.out.println(d.get());
+		  
+		  
+	}
+
+}

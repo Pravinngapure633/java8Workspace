@@ -1,0 +1,15 @@
+package Supplier;
+
+import java.util.function.Supplier;
+
+public class SupplierDemo {
+	
+	public static void main(String[] args) {
+		
+		Supplier<Integer> supply=()->(int)Math.random();
+	
+				Integer num = supply.get();
+				System.out.println(num);
+	}
+
+}

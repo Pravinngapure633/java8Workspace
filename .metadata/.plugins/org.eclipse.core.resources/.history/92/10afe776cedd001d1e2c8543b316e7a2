@@ -1,0 +1,109 @@
+package com.cjc.streamapi;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+public class StreamDemo {
+
+	public static void main(String[] args) {
+
+	  List<Employee> list = getEmployeeList();
+	 Optional<Employee> opt = list.stream().findFirst().filter(emp->emp.getSalary()==87000.00);
+	 if(opt.isPresent())
+	 {
+		 Employee employee = opt.get();
+		 System.out.println(employee);
+	 }else {
+		System.out.println("No record Found");
+	}
+	   
+	}
+	public static void less1500salary(List<Employee> list) {
+		List<Employee> top3Salary = list.stream()
+				  .sorted()
+				  .limit(3)
+				  .map((emp)->{
+					  emp.setSalary(emp.getSalary()-15000.00);
+					  return emp;
+				  })
+				  .collect(Collectors.toList());
+		  top3Salary.forEach(emp->System.out.println(emp));
+	}
+	public static void top3Salary(List<Employee> list) {
+		List<Employee> top3Salary = list.stream()
+				  .sorted()
+				  .limit(3)
+				  .collect(Collectors.toList());
+		  top3Salary.forEach(emp->System.out.println(emp));
+	}
+	public static void salaryGratherThan60k(List<Employee> list) {
+		List<Employee> salaryGratherThan60k = list.stream().filter(emp->emp.getSalary()>60000).collect(Collectors.toList());
+		  
+		  salaryGratherThan60k.forEach(emp->System.out.println(emp));
+	}
+	public static void seperateEmployeeAccourdinngDept(List<Employee> list) {
+		List<Employee> devList = list.stream().filter(emp->emp.getDept().equals("Dev")).collect(Collectors.toList());
+//	  System.out.println(devList);
+		  //for iterate use consume
+		  //Consumer<Employee> con=emp->System.out.println(emp);
+		  devList.forEach(emp->System.out.println(emp));
+	}
+	public static List<Employee> getEmployeeList() {
+		List<Employee> empList=new ArrayList<Employee>();
+		 // empList.add(new Employee(101, "Saurabh", "Tester", 87000, "QA"));
+		  empList.add(new Employee(105, "Vishal", "Hr", 90000, "HR"));
+		  empList.add(new Employee(104, "Pravin", "Cloud Eng", 55000, "Cloud"));
+		  empList.add(new Employee(107, "Sahil", "Developer", 65000, "Dev"));
+		  //empList.add(new Employee(103, "Bhupesh", "Developer", 87000, "Dev"));
+		  empList.add(new Employee(108, "Akshay", "Manager", 100000, "Dev"));
+		  empList.add(new Employee(102, "Piyush", "Tester", 35000, "HR"));
+		  empList.add(new Employee(109, "Mayank", "Clerk", 20000, "Admin"));
+		return empList;
+	}
+	//limit
+	public static void limit(List<Integer> list) {
+		List<Integer> list2 = list.stream().limit(3).collect(Collectors.toList());
+		System.out.println(list2);
+	}
+	//sorted
+	public static void sortedAndremoveDuplicate(List<Integer> list) {
+		List<Integer> list2 = list.stream().distinct().sorted().collect(Collectors.toList());
+		System.out.println(list2);
+	}
+	//distinct method
+	public static void removeDuplicate(List<Integer> list) {
+		List<Integer> list2 = list.stream().distinct().collect(Collectors.toList());
+		System.out.println(list2);
+	}
+	//map method
+	public static void convertToSquare(List<Integer> list) {
+		// Function<Integer, Integer> fun=num->num*num;
+		List<Integer> list2 = list.stream()
+				.map(num -> num * num)
+				.collect(Collectors.toList());
+		System.out.println(list2);
+	}
+
+	// filter method
+	public static void oddLessthan10(List<Integer> list) {
+		List<Integer> oddListLessThan10 = list.stream().filter(num -> num % 2 != 0).filter(num -> num < 10)
+				.collect(Collectors.toList());
+
+		System.out.println(oddListLessThan10);
+	}
+
+	// filter method
+	public static void separateEvenNum(List<Integer> list) {
+		// Predicate<Integer> even=num->num%2==0;
+		//
+		// List<Integer> list2 =
+		// list.stream().filter(even).collect(Collectors.toList());
+
+		List<Integer> list2 = list.stream().filter(num -> num % 2 == 0) // intermediate operation
+				.collect(Collectors.toList()); // terminal operation
+
+		System.out.println(list2);
+	}
+}
